@@ -9,7 +9,7 @@
     <title>{{ name }}'s watchlist</title>
 </head>
 <body>
-    <h2><img class="avatar" src="{{ url_for('static', filename='images/saber_head.png') }}">{{ name }}'s watchlist</h2>
+    <h2><img class="front-img" src="{{ url_for('static', filename='images/saber_head.png') }}">{{ user.name }}'s watchlist</h2>
     {# 使用length 过滤器获取movies 变量的长度 #}
     <P>{{ movies|length }} Titles</P>
     <ul class="movie-list">
@@ -18,7 +18,7 @@
         <li>{{ movie.title }} - {{ movie.year }}</li>
         {% endfor %}
     </ul>
-    <img class="totoro" src="{{ url_for('static', filename='images/saber.gif') }}">
+    <img class="tail-img" src="{{ url_for('static', filename='images/saber.gif') }}">
     <footer>
         <small>&copy; 2020<a href="http://www.dogedoge.com">Hello test</a></small>
     </footer>

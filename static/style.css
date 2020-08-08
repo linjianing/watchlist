@@ -13,7 +13,7 @@ text-align: center;
 padding: 10px;
 }
 /* 头像 */
-.avatar {
+.front-img {
 width: 40px;
 }
 /* 电影列表 */
@@ -34,8 +34,8 @@ border-bottom:none;
 .movie-list li:hover {
 background-color: #f8f9fa;
 }
-/* 龙猫图片 */
-.totoro {
+/* 页底图片 */
+.tail-img {
 display: block;
 margin: 0 auto;
 height: 100px;
