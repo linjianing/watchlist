@@ -16,13 +16,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-# 视图部分
-@app.route('/')
-def index():
-    user = User.query.first()
-    movies = Movie.query.all()
-    return render_template('index.html', user=user, movies=movies)
-
 
 # 模型类
 class User(db.Model):
@@ -78,3 +71,25 @@ def forge():
 
     db.session.commit()
     click.echo('Done.')
+
+
+# 视图部分
+@app.context_processor
+def inject_user(): # 函数名任意
+    user = User.query.first()
+    return dict(user=user)  # 以字典形式返回
+
+
+@app.route('/')
+def index():
+    movies = Movie.query.all()
+    return render_template('index.html', movies=movies)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    # user = User.query.first()
+    return render_template('404.html'), 404  # 返回模板和状态码
+
+
+

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+    <title>{{ user.name }}'s watchlist</title>
+    {% endblock %}
+</head>
+<body>
+    <h2><img class="front-img" src="{{ url_for('static', filename='images/saber_head.png') }}">
+        {{ user.name }}'s watchlist
+    </h2>
+    {# 使用length 过滤器获取movies 变量的长度 #}
+    <nav>
+        <ul class="movie-list">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+        </ul>
+    </nav>
+    {% block content %}{% endblock %}
+    <footer>
+        <small>&copy; 2020<a href="http://www.dogedoge.com">Hello test</a></small>
+    </footer>
+</body>
+</html>>

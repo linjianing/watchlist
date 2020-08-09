@@ -1,26 +1,16 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
-    <title>{{ name }}'s watchlist</title>
-</head>
-<body>
-    <h2><img class="front-img" src="{{ url_for('static', filename='images/saber_head.png') }}">{{ user.name }}'s watchlist</h2>
+{% extends 'base.html' %}
+{% block content %}
     {# 使用length 过滤器获取movies 变量的长度 #}
     <P>{{ movies|length }} Titles</P>
     <ul class="movie-list">
         {% for movie in movies %}
         {# 等同于movie['title'] #}
-        <li>{{ movie.title }} - {{ movie.year }}</li>
+        <li>{{ movie.title }} - {{ movie.year }}
+            <span class="float-right">
+                <a class="douban" href="https://movie.douban.com/subject_search?search_text={{ movie.title }}" target="_blank" title="Find this movie on douban">豆瓣</a>
+            </span>
+        </li>
         {% endfor %}
     </ul>
-    <img class="tail-img" src="{{ url_for('static', filename='images/saber.gif') }}">
-    <footer>
-        <small>&copy; 2020<a href="http://www.dogedoge.com">Hello test</a></small>
-    </footer>
-</body>
-</html>>
+    <img alt="Saber" class="tail-img" src="{{ url_for('static', filename='images/saber.gif') }}" title="Saber">
+{% endblock %}
