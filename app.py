@@ -121,11 +121,12 @@ def index():
         if not title or not year or len(year) > 4 or len(title) > 60:
             flash('Invalid input.')
             return redirect(url_for('index'))
-        movie = Movie(title=title, year=year)
-        db.session.add(movie)
-        db.session.commit()
-        flash('Item created.')
-        return redirect(url_for('index'))
+        else:
+            movie = Movie(title=title, year=year)
+            db.session.add(movie)
+            db.session.commit()
+            flash('Item created.')
+            return redirect(url_for('index'))
     else:
         movies = Movie.query.all()
         return render_template('index.html', movies=movies)
