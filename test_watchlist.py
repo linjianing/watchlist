@@ -1,5 +1,7 @@
 import unittest
-from app import db, app, User, Movie, forge, initdb
+from watchlist import db, app
+from watchlist.commands import forge, initdb
+from watchlist.models import User, Movie
 
 
 class WatchlistTestCase(unittest.TestCase):
@@ -260,6 +262,7 @@ class WatchlistTestCase(unittest.TestCase):
         self.assertEqual(User.query.count(), 1)
         self.assertEqual(User.query.first().username, 'test')
         self.assertTrue(User.query.first().validate_password('456'))
+
 
 if __name__ == '__main__':
     unittest.main()
